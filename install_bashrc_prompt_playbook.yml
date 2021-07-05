@@ -1,0 +1,19 @@
+---
+- name: Configure basic settings in a Linux servers
+  hosts: localhost
+  vars:
+    ansible_connection: local
+  tasks:
+    - name: Ensure Bash prompt is installed
+      copy:
+        dest: "{{ lookup('env','HOME') }}/.bashrc_ps1"
+        src: bashrc_ps1.sh
+        mode: 0755
+        backup: yes
+    - name: Ensure Bash prompt is included in bashrc
+      lineinfile:
+        dest: "{{ lookup('env','HOME') }}/.bashrc"
+        regexp: 'source .*/\.bashrc_ps1"'
+        line: 'source "${HOME}/.bashrc_ps1"'
+        state: present
+        backup: yes
