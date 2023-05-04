@@ -16,6 +16,8 @@ LIGHT_GREEN="\[\033[1;32m\]"
 # shellcheck disable=SC2034
  LIGHT_GRAY="\[\033[0;37m\]"
 # shellcheck disable=SC2034
+BOLD_WHITE_ON_RED="\e[1;37;41m"
+# shellcheck disable=SC2034
  COLOR_NONE="\[\e[0m\]"
 function is_git_repository {
   git branch > /dev/null 2>&1
@@ -95,7 +97,7 @@ function set_bash_prompt () {
   fi
 
   # Set the bash prompt variable.
-  PS1="${GREEN}\u@\h${COLOR_NONE}${RED}${OS_CREDENTIALS}${COLOR_NONE}${YELLOW}${PYTHON_VIRTUALENV}${COLOR_NONE}:${BLUE}\w${COLOR_NONE}${LIGHT_GRAY}${BRANCH}${COLOR_NONE} ${PROMPT_SYMBOL} "
+  PS1="${GREEN}\u@\h${COLOR_NONE}${BOLD_WHITE_ON_RED}${OS_CREDENTIALS}${COLOR_NONE}${YELLOW}${PYTHON_VIRTUALENV}${COLOR_NONE}:${BLUE}\w${COLOR_NONE}${LIGHT_GRAY}${BRANCH}${COLOR_NONE} ${PROMPT_SYMBOL} "
 }
 
  # Tell bash to execute this function just before displaying its prompt.
