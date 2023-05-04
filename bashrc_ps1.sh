@@ -72,7 +72,7 @@ function set_openstack_creds () {
 if test -z "${OS_USERNAME}" ; then
   OS_CREDENTIALS=""
 else
-  OS_CREDENTIALS=" {OS: ${OS_USERNAME}@${OS_REGION_NAME}}"
+  OS_CREDENTIALS=" ${BOLD_WHITE_ON_RED}{OS: ${OS_USERNAME}@${OS_REGION_NAME}}${COLOR_NONE}"
 fi
 
 }
@@ -97,7 +97,7 @@ function set_bash_prompt () {
   fi
 
   # Set the bash prompt variable.
-  PS1="${GREEN}\u@\h${COLOR_NONE}${BOLD_WHITE_ON_RED}${OS_CREDENTIALS}${COLOR_NONE}${YELLOW}${PYTHON_VIRTUALENV}${COLOR_NONE}:${BLUE}\w${COLOR_NONE}${LIGHT_GRAY}${BRANCH}${COLOR_NONE} ${PROMPT_SYMBOL} "
+  PS1="${GREEN}\u@\h${COLOR_NONE}${OS_CREDENTIALS}${YELLOW}${PYTHON_VIRTUALENV}${COLOR_NONE}:${BLUE}\w${COLOR_NONE}${LIGHT_GRAY}${BRANCH}${COLOR_NONE} ${PROMPT_SYMBOL} "
 }
 
  # Tell bash to execute this function just before displaying its prompt.
